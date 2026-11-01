@@ -104,7 +104,7 @@ body{background:#fff;background-image:radial-gradient(ellipse at 15% 0%,rgba(20,
  <main class="main">
    <header class="topbar">
     <div class="top-right"><button class="icon-btn" id="sidebarToggle" aria-label="فتح أو إغلاق القائمة الجانبية"></button><div><div class="top-location">لوحة الإدارة / <span id="breadcrumbs">إدارة الوقت</span></div><div class="top-title" id="topTitle">لوحة التشغيل</div></div></div>
-    <div class="top-left"><span class="db-badge" id="dbBadge">جارِ التحميل...</span><div class="top-time"><b id="clock">--:--:--</b><span id="todayDate">التاريخ</span></div><a href="./client.html" class="btn small-btn" style="font-size:12px">موقع العملاء</a><button class="btn small-btn" id="adminLogout" title="تسجيل الخروج">خروج</button><div class="avatar">GH</div></div>
+    <div class="top-left"><span class="db-badge" id="dbBadge">جارِ التحميل...</span><div class="top-time"><b id="clock">--:--:--</b><span id="todayDate">التاريخ</span></div><button class="btn small-btn" id="adminLogout" title="تسجيل الخروج">خروج</button><div class="avatar">GH</div></div>
    </header>
    <div class="content" id="view"><div class="empty-panel">جارِ تجهيز لوحة التحكم...</div></div>
  </main>
@@ -121,7 +121,7 @@ body{background:#fff;background-image:radial-gradient(ellipse at 15% 0%,rgba(20,
  .gate-box a{color:#117e70}
  @media(max-width:650px){.top-left #adminLogout,.top-left a{font-size:10px;padding:8px}}
 </style>
-<div id="adminGate"><div class="gate-box"><div style="color:#15896e;font-size:14px;font-weight:900;letter-spacing:2px;margin-bottom:12px">GAME HUB • FIREBASE</div><h1>دخول لوحة الإدارة</h1><p>بيانات الجلسات والأرباح محفوظة في Cloud Firestore، ولا يقدر يدخل لوحة التحكم إلا المدير المصرّح له.</p><form id="adminGateForm"><label for="adminEmail">بريد المدير الإلكتروني</label><input id="adminEmail" type="email" autocomplete="username" required placeholder="admin@example.com"/><label for="adminPassword">كلمة السر</label><input id="adminPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="••••••••"/><button id="gateButton" class="gate-submit" type="submit">تسجيل الدخول</button></form><p id="adminGateInfo" role="status">جارِ تجهيز Firebase...</p><p style="font-size:12px">عميل؟ <a href="./client.html">ادخل على موقع العملاء</a></p></div></div>
+<div id="adminGate"><div class="gate-box"><div style="color:#15896e;font-size:14px;font-weight:900;letter-spacing:2px;margin-bottom:12px">GAME HUB • FIREBASE</div><h1>دخول لوحة الإدارة</h1><p>بيانات الجلسات والأرباح محفوظة في Cloud Firestore، ولا يقدر يدخل لوحة التحكم إلا المدير المصرّح له.</p><form id="adminGateForm"><label for="adminEmail">بريد المدير الإلكتروني</label><input id="adminEmail" type="email" autocomplete="username" required placeholder="admin@example.com"/><label for="adminPassword">كلمة السر</label><input id="adminPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="••••••••"/><button id="gateButton" class="gate-submit" type="submit">تسجيل الدخول</button></form><p id="adminGateInfo" role="status">جارِ تجهيز Firebase...</p></div></div>
 <script>
 'use strict';
 const ICONS={
@@ -472,7 +472,7 @@ function renderSettings(){return `${heading('PRICING & SETTINGS','كل حاجة 
 const BOOKING_LABELS={pending:'في انتظار الموافقة',approved:'محجوز بالأصفر',in_progress:'جلسة شغالة',completed:'مكتمل · فاتورة مسجلة',rejected:'مرفوض',cancelled:'ملغي'};
 function renderBookings(){
  const entries=state.bookings||[];
- return `${heading('CLIENT BOOKING DESK','طلبات العملاء والحجوزات','كل طلب بيظهر هنا فور تسجيله من موقع العملاء. قبول الطلب بيحجز الروم ويحوّله للأصفر.',`<a class="btn" href="./client.html" target="_blank" rel="noopener">افتح موقع العملاء</a>`)}
+ return `${heading('CLIENT BOOKING DESK','طلبات العملاء والحجوزات','كل طلب بيظهر هنا فور تسجيله من موقع العملاء. قبول الطلب بيحجز الروم ويحوّله للأصفر.')}
  <div class="panel" style="padding:20px;overflow:auto"><div class="panel-header"><h3 class="panel-title">كل الطلبات (${entries.length})</h3><span class="pill">Cloud Firestore • مباشر</span></div>
  ${entries.length?`<div style="display:grid;gap:12px">${entries.map(b=>{
   const color=b.status==='approved'?'#b78007':b.status==='in_progress'?'#d1444f':b.status==='completed'?'#098b62':'#64748b';
