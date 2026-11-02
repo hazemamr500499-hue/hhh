@@ -102,3 +102,7 @@ firebase deploy --only firestore:rules,hosting
 
 تم تحديد `engines.node` إلى `22.x` بدل `>=18` لمنع تغيير إصدار Node الرئيسي تلقائياً على Vercel.
 للنشر بدون Node.js أو npm استخدم ملف `GAME_HUB_VERCEL_READY.zip` المنفصل؛ الموقع واجهة ثابتة تتصل بـFirebase من المتصفح.
+
+
+## ملحوظة
+ملفات التشغيل المحلي (`package.json` و`server.cjs` و`START_WINDOWS.bat`) بقت جوه مجلد `local/`. للنشر على Vercel/Firebase ارفع باقي الملفات فقط؛ الموقع ثابت ومفيش build.

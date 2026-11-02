@@ -1,7 +1,7 @@
 'use strict';
 // Static server only. Authentication and all database writes happen via Firebase SDK.
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
-const root=__dirname,port=Number(process.env.PORT||3000),host='127.0.0.1';
+const root=path.join(__dirname,'..'),port=Number(process.env.PORT||3000),host='127.0.0.1';
 if(!Number.isInteger(port)||port<1||port>65535){console.error('GAME HUB: رقم PORT غير صحيح.');process.exit(1);}
 const map={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.ico':'image/x-icon','.png':'image/png','.svg':'image/svg+xml','.json':'application/manifest+json'};
 const allowed=new Set(['index.html','cloud.js','firebase-config.js','finance.js','manifest.json','sw.js','icon.svg','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png']);
